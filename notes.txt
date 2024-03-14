@@ -1,0 +1,8 @@
+OpenCV
+compila.sh hello_opencv
+./hello_opencv
+
+Cekeikon
+source ~/cekeikon5/bin/ativa_cekcpu
+compila mostra -cek
+./mostra
