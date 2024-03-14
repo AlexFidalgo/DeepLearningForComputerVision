@@ -1,0 +1,23 @@
+*.bmp
+*.pbm
+*.pgm
+*.jpg
+.vscode/
+*.ppm
+*.png
+*.zip
+aula01/basico/compila
+aula01/basico/borda
+aula01/basico/homework1
+aula01/basico/inv_1d2
+aula01/basico/inv_cek
+aula01/basico/invertec_ocv
+aula01/basico/inv_ocv
+aula01/basico/inv_ocv2
+aula01/basico/mostra
+aula01/basico/mostra_cv
+aula01/crescimento_de_semente/homework2
+aula01/crescimento_de_semente/pinta_fila
+checking_opencv_installation/hello_opencv
+compila_path_file/compila.sh
+# for f in $(find . -perm /111 -type f | grep -v '.git' | sed 's#^./##' | sort -u); do grep -q "$f" .gitignore || echo "$f" >> .gitignore ; done
