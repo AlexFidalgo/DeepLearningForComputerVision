@@ -7,6 +7,9 @@
 *.png
 *.zip
 *.odt
+*.jpeg
+*.odg
+*.tga
 aula01/basico/compila
 aula01/basico/borda
 aula01/basico/homework1
@@ -20,6 +23,15 @@ aula01/basico/mostra_cv
 aula01/crescimento_de_semente/homework2
 aula01/crescimento_de_semente/pinta_fila
 checking_opencv_installation/hello_opencv
+aula02/filtros_e_convolucao/filtlin/enfbordac
+aula02/filtros_e_convolucao/filtlin/media
+aula02/filtros_e_convolucao/filtlin/media_borda
+aula02/filtros_e_convolucao/filtlin/media-movel
+aula02/filtros_e_convolucao/gradiente/homework2
+aula02/filtros_e_convolucao/media-mediana/blur
+aula02/filtros_e_convolucao/media-mediana/media
+aula02/filtros_e_convolucao/textura/homework1
+cpp_examples/nth_element_example
 
 #compila_path_file/compila.sh
 # for f in $(find . -perm /111 -type f | grep -v '.git' | sed 's#^./##' | sort -u); do grep -q "$f" .gitignore || echo "$f" >> .gitignore ; done
