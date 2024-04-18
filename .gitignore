@@ -6,6 +6,7 @@
 *.ppm
 *.png
 *.zip
+*.odt#
 *.jpeg
 *.odg
 *.tga
@@ -44,3 +45,4 @@ aula03/casamento_de_modelo/match2d
 aula03/transformacoes_geometricas/ka0.jpg
 aula03/transformacoes_geometricas/ka1.jpg
 aula03/transformacoes_geometricas/vizinho
+aula03/transformacoes_geometricas/linear
