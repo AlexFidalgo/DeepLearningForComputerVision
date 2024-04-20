@@ -48,3 +48,24 @@ Mat_<float> matchTemplateSame(Mat_<float> a, Mat_<float> q, int method, float ba
   return p;
 }
 
+template<typename T> class ImgXyb: public Mat_<T> {
+public:
+  using Mat_<T>::Mat_; //inherit constructors
+
+  T backg;
+  int lc=0, cc=0;
+  int minx=0, maxx=this->cols-1, miny=1-this->rows, maxy=0;
+
+  void centro(int _lc, int _cc) { 
+    lc=_lc; cc=_cc;
+    minx=-cc; maxx=this->cols-cc-1;
+    miny=-(this->rows-lc-1); maxy=lc;
+  }
+
+  T& operator()(int x, int y) { // modo XY centralizado
+    unsigned li=lc-y; unsigned ci=cc+x;
+    if (li<unsigned(this->rows) && ci<unsigned(this->cols))
+      return (*this).Mat_<T>::operator()(li,ci);
+    else return backg;
+  }
+};
