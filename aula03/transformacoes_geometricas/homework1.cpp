@@ -11,15 +11,15 @@ seu programa, manualmente, as suas coordenadas.
 
 int main() {
   Mat_<float> src = (Mat_<float>(4,2) <<
-    73,0,
-    533,0,
-    -22,479,
-    629,479);
+    139,45,
+    108,294,
+    322,35,
+    352,293);
   Mat_<float> dst = (Mat_<float>(4,2) <<
-    16,0,
-    630,0,
-    14,479,
-    630,479);
+    109,33,
+    109,295,
+    323,35,
+    323,293);
   Mat_<double> m=getPerspectiveTransform(src,dst);
   cout << m << endl;
 
@@ -30,9 +30,9 @@ int main() {
   cout << w(0)/w(2) << " " << w(1)/w(2) << endl;
 
   //Corrige a perspectiva
-  Mat_<Vec3b> a; a = imread("ka0.jpg", 1);
+  Mat_<Vec3b> a; a = imread("calib_result.jpg", 1);
   Mat_<Vec3b> b;
   warpPerspective(a,b,m,a.size());
-  imwrite("ka1.jpg", b);
+  imwrite("homework_result.jpg", b);
 
 }

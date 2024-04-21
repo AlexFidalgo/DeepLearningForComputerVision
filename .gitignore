@@ -32,9 +32,7 @@ aula02/filtros_e_convolucao/media-mediana/blur
 aula02/filtros_e_convolucao/media-mediana/media
 aula02/filtros_e_convolucao/textura/homework1
 cpp_examples/nth_element_example
-
 #compila_path_file/compila.sh
-# for f in $(find . -perm /111 -type f | grep -v '.git' | sed 's#^./##' | sort -u); do grep -q "$f" .gitignore || echo "$f" >> .gitignore ; done
 aula02/filtros_e_convolucao/gradiente/homework2/homework2
 aula02/filtros_e_convolucao/textura/homework1/homework1
 aula03/casamento_de_modelo/homework1
@@ -50,3 +48,7 @@ aula03/transformacoes_geometricas/rotacao
 aula03/transformacoes_geometricas/rotacaocv
 aula03/transformacoes_geometricas/translacaocv
 aula03/transformacoes_geometricas/pers
+
+# for f in $(find . -perm /111 -type f | grep -v '.git' | sed 's#^./##' | sort -u); do grep -q "$f" .gitignore || echo "$f" >> .gitignore ; doneaula
+
+03/transformacoes_geometricas/homework1
