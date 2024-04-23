@@ -49,6 +49,7 @@ aula03/transformacoes_geometricas/rotacaocv
 aula03/transformacoes_geometricas/translacaocv
 aula03/transformacoes_geometricas/pers
 
-# for f in $(find . -perm /111 -type f | grep -v '.git' | sed 's#^./##' | sort -u); do grep -q "$f" .gitignore || echo "$f" >> .gitignore ; doneaula
+# for f in $(find . -perm /111 -type f | grep -v '.git' | sed 's#^./##' | sort -u); do grep -q "$f" .gitignore || echo "$f" >> .gitignore ; done
 
-03/transformacoes_geometricas/homework1
+aula03/transformacoes_geometricas/homework1
+aula05/aprendizado_maquina_para_filtros/tabelann
