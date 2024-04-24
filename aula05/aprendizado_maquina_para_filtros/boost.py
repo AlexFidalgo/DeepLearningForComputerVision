@@ -11,7 +11,7 @@ features=(ax/255).reshape((ax.shape[0]*ax.shape[1],3))
 saidas  =(ay/255).reshape((ay.shape[0]*ax.shape[1],))
 
 clf = ensemble.GradientBoostingClassifier()
-clf = clf.fit(features,saidas)
+clf = clf.fit(features,saidas) #treinamento 
 
 qx = cv2.imread("f1.jpg",1)
 query = (qx/255).reshape((qx.shape[0]*qx.shape[1],3))

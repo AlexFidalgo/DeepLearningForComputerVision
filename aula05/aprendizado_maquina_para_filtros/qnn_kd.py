@@ -52,6 +52,9 @@ def NearestNeighbors(AX, AY, QX):
         index = reverse_transform_index(ind[0,0], AX)
         QP.append(AY[index])
 
+    size = int(np.sqrt(len(QP)))
+    QP = np.array(QP).reshape((size, size))
+
     return QP
 
 
