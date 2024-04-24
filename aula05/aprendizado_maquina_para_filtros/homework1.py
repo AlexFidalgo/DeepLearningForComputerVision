@@ -20,44 +20,39 @@ def reverse_transform_index(index, A):
     return l_index, c_index
 
 
-def get_vizinhanca_matrix(A):
-
+def get_vizinhanca_matrix(A, window_size):
     l, c = A.shape
-    C = np.zeros((l * c, 49), dtype=np.uint8)
+    padding = window_size // 2
+    window_shape = (1, window_size * window_size)
+
+    C = np.zeros((l * c, window_shape[1]), dtype=np.uint8)
 
     for i in range(l):
         for j in range(c):
             index = i * c + j
-            if i < 3 or i >= l - 3 or j < 3 or j >= c - 3:
-                C[index] = np.full((1, 49), 255, dtype=np.uint8)
+            if i < padding or i >= l - padding or j < padding or j >= c - padding:
+                C[index] = np.full(window_shape, 255, dtype=np.uint8)
             else:
-                C[index] = vizinhanca77(AX, i, j)
+                C[index] = get_vizinhanca(A, i, j, window_size)
 
     return C
 
-def vizinhanca33(a, lc, cc):
-    d = np.zeros((1, 9), dtype=np.uint8)
-    i = 0
-    for l in range(-1, 2):
-        for c in range(-1, 2):
-            d[0, i] = a[lc + l, cc + c]
-            i += 1
+def get_vizinhanca(a, lc, cc, window_size):
+    d = np.zeros((1, window_size * window_size), dtype=np.uint8)
+    index = 0
+    padding = window_size // 2
+
+    for l in range(-padding, padding + 1):
+        for c in range(-padding, padding + 1):
+            d[0, index] = a[lc + l, cc + c]
+            index += 1
+
     return d
 
-def vizinhanca77(a, lc, cc):
-    d = np.zeros((1, 49), dtype=np.uint8)
-    i = 0
-    for l in range(-3, 4):
-        for c in range(-3, 4):
-            d[0, i] = a[lc + l, cc + c]
-            i += 1
-    return d
+def NearestNeighbors(AX, AY, QX, window_size):
 
-
-def NearestNeighbors(AX, AY, QX):
-
-    viz_AX = get_vizinhanca_matrix(AX)
-    viz_QX = get_vizinhanca_matrix(QX)
+    viz_AX = get_vizinhanca_matrix(AX, window_size)
+    viz_QX = get_vizinhanca_matrix(QX, window_size)
 
     QP = []
 
@@ -79,9 +74,10 @@ if __name__ == "__main__":
     AX = cv2.imread(os.path.join(current_directory, "lax.bmp"), 0)
     AY = cv2.imread(os.path.join(current_directory, "lay.bmp"), 0)
     QX = cv2.imread(os.path.join(current_directory, "lqx.bmp"), 0)
+    window_size = 7
     
     start_time = time.time()
-    result = NearestNeighbors(AX, AY, QX)
+    result = NearestNeighbors(AX, AY, QX, window_size)
     end_time = time.time()
     print("Execution time: {:.2f} seconds".format(end_time - start_time))
     
