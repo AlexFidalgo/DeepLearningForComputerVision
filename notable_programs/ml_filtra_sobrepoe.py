@@ -129,4 +129,4 @@ if __name__ == "__main__":
     cv2.imwrite(os.path.join(current_directory, "jul_red.png"), jul_red)
 
     sobreposto = sobrepoe_imagens(QX, jul_red)
-    cv2.imwrite(os.path.join(current_directory, 'Homework_results', "julho-c1.png.png"), sobreposto)
+    cv2.imwrite(os.path.join(current_directory, "julho-c1.png.png"), sobreposto)

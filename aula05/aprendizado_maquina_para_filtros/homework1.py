@@ -81,4 +81,4 @@ if __name__ == "__main__":
     end_time = time.time()
     print("Execution time: {:.2f} seconds".format(end_time - start_time))
     
-    cv2.imwrite(os.path.join(current_directory, "lx_kd.pgm"), result)
+    cv2.imwrite(os.path.join(current_directory, 'Homework_results', "lx_kd.pgm"), result)
