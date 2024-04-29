@@ -17,7 +17,7 @@ qx = qx.reshape(qx.shape[0],qx.shape[1]*qx.shape[2]).astype("float32")/255
 
 t1 = time.time()
 FLANN_INDEX_KDTREE = 1;  # BUG: Faltam "FLANN enums" do OpenCV
-flann_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 4);
+flann_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 180);
 flann = cv2.flann_Index(ax, flann_params)
 t2 = time.time()
 matches, dists = flann.knnSearch(qx, 1)
