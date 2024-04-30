@@ -1,7 +1,6 @@
-import tensorflow.keras as keras
+import numpy as np
 from keras.datasets import mnist
 import cv2
-import numpy as np
 import time
 
 # Load MNIST dataset
@@ -31,15 +30,23 @@ def shift_down(image):
     shifted[0, :] = 0  # Fill the empty space with zeros
     return shifted
 
+# Define function to rotate images
+def rotate_image(image, angle):
+    center = (image.shape[1] / 2, image.shape[0] / 2)
+    rotation_matrix = cv2.getRotationMatrix2D(center, angle, 1.0)
+    rotated = cv2.warpAffine(image, rotation_matrix, (image.shape[1], image.shape[0]), flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+    return rotated
+
 # Apply data augmentation to create augmented datasets
 augmented_AX_left = np.array([shift_left(img) for img in AX])
 augmented_AX_right = np.array([shift_right(img) for img in AX])
 augmented_AX_up = np.array([shift_up(img) for img in AX])
 augmented_AX_down = np.array([shift_down(img) for img in AX])
+augmented_AX_rotated = np.array([rotate_image(img, 15) for img in AX])  # Rotate images by 15 degrees clockwise
 
 # Concatenate original dataset with augmented datasets
-augmented_AX = np.concatenate((AX, augmented_AX_left, augmented_AX_right, augmented_AX_up, augmented_AX_down))
-augmented_ay = np.concatenate((ay, ay, ay, ay, ay))  # Corresponding labels remain the same
+augmented_AX = np.concatenate((AX, augmented_AX_left, augmented_AX_right, augmented_AX_up, augmented_AX_down, augmented_AX_rotated))
+augmented_ay = np.concatenate((ay, ay, ay, ay, ay, ay))  # Corresponding labels remain the same
 
 # Reshape augmented data
 augmented_ax = augmented_AX.reshape(augmented_AX.shape[0], augmented_AX.shape[1] * augmented_AX.shape[2]).astype("float32") / 255

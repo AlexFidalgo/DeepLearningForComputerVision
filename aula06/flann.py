@@ -3,6 +3,8 @@ from keras.datasets import mnist
 import cv2, sys, time
 import numpy as np
 
+
+
 (AX, ay), (QX, qy) = mnist.load_data();
 
 ax=np.empty((AX.shape[0],14,14))
@@ -17,7 +19,7 @@ qx = qx.reshape(qx.shape[0],qx.shape[1]*qx.shape[2]).astype("float32")/255
 
 t1 = time.time()
 FLANN_INDEX_KDTREE = 1;  # BUG: Faltam "FLANN enums" do OpenCV
-flann_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 180);
+flann_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 100);
 flann = cv2.flann_Index(ax, flann_params)
 t2 = time.time()
 matches, dists = flann.knnSearch(qx, 1)
