@@ -33,3 +33,4 @@ print('Test loss: %.4f'%(score[0]))
 print('Test accuracy: %.2f %%'%(100*score[1]))
 print('Test error: %.2f %%'%(100*(1-score[1])))
 model.save('mlp2.keras')
+
