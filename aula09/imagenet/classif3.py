@@ -29,8 +29,10 @@ target_size = (224, 224)
 #img_path = argv[1] #Escreva aqui o diretorio e nome da imagem
 img_path = "orangotango.jpg"
 img = image.load_img(img_path, target_size=target_size)
-plt.imshow(img); plt.axis("off"); plt.show()
-x = image.img_to_array(img); x = np.expand_dims(x, axis=0)
+plt.imshow(img); plt.axis("off")
+plt.show()
+x = image.img_to_array(img)
+x = np.expand_dims(x, axis=0)
 x = preprocess_input(x)
 
 preds = model.predict(x)
